@@ -52,9 +52,9 @@ sudo mysql
 
 ```
 isi seperti dibawah 
-# CREATE DATABASE opor_bebek_bu_Kom;
-## CREATE USER 'webuser'@'localhost' IDENTIFIED BY 'password';
-### GRANT ALL PRIVILEGES ON opor_bebek_bu_Kom.* TO 'webuser'@'localhost';
+#### CREATE DATABASE opor_bebek_bu_Kom;
+#### CREATE USER 'webuser'@'localhost' IDENTIFIED BY 'password';
+#### GRANT ALL PRIVILEGES ON opor_bebek_bu_Kom.* TO 'webuser'@'localhost';
 #### FLUSH PRIVILEGES;
 ---
 
