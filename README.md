@@ -1,10 +1,9 @@
-# Final-Project-OS-Server-Sistem-Admin
 # FINAL PROJECT OS SERVER - 23.83.0962
 
-Membuat Layanan Web Server di *Ubuntu Desktop 22.04.3* dengan spesifikasi berikut:
-- *RAM*: 8 GB  
-- *Processor*: 4 CPU  
-- *Disk*: 50 GB
+Membuat Layanan Web Server di **Ubuntu Desktop 22.04.3** dengan spesifikasi berikut:
+- **RAM**: 8 GB  
+- **Processor**: 4 CPU  
+- **Disk**: 50 GB
 
 ## Daftar Isi
 1. [1. Squid Server](#1-squid-server)
@@ -21,35 +20,35 @@ Membuat Layanan Web Server di *Ubuntu Desktop 22.04.3* dengan spesifikasi beriku
 Penjelasan tentang instalasi dan konfigurasi Squid Server.
 ### 1.1 Install Squid Server
 Langkah 1: Install Squid Server
-
+```
 sudo apt install squid
-
+```
 ### 1.2 Configurasi Squid Server
 Langkah 1: Buka repo Squid dengan teks editor (saya menggunakan nano)
-
+```
 sudo nano /etc/squid/squid.conf
-
+```
 Langkah 2: Allow http port (scroll kebawah sampai menemukan http_port, lalu ganti dengan 8888
-
+```
 http_port 8888
-
+```
 Langkah 3: buat hostname agar terlihat (scroll kebawah sampai menemukan visible_hostname saya menggunakan hostname haruna)
-
+```
 visible_hostname haruna
-
+```
 Langkah 4: Masukan ip ubuntu di adapt to list your (ip kamu) IP network from where browsing
-
+```
 Masukan ip ubuntu di adapt to list your (192.168.0.101) IP network from where browsing
-
+```
 Langkah 5: Restart squid
-
+```
 sudo systemctl restart squid.service
-
+```
 ### 1.3 Cek Squid
 Langkah 1: Menguji Squid
-
+```
 curl -v -x http://<hostname>:<ip>:<port> https://www.google.com/
-
+```
 hostname diisi dengan hostname pada visible, ip adalah ip vm, port adalah port 8888 yang sudah diisi tadi
 
 ![hasil](ss/9.png)
@@ -60,51 +59,51 @@ hostname diisi dengan hostname pada visible, ip adalah ip vm, port adalah port 8
 Penjelasan tentang instalasi dan konfigurasi Nginx.
 ### 1.1 Install Nginx
 Langkah 1: update ubuntu dan install nginx
-
+```
 sudo apt update
 sudo apt install nginx
-
+```
 Langkah 2: lihat list firewall
-
+```
 sudo ufw app list
-
+```
 ![hasil](ss/14.png)
 
 Langkah 3: allow http nginx
-
+```
 sudo ufw allow 'Nginx HTTP'
-
+```
 Langkah 4: status nginx
-
+```
 sudo ufw status
-
+```
 ![hasil](ss/15.png)
 
 Langkah 5: periksa nginx
-
+```
 systemctl status nginx
-
+```
 ![hasil](ss/16.png)
 
 Langkah 6: cek ip ke browser
-
+```
 http://server_ip_kamu
-
+```
 ### 1.2 config nginx
 Langkah 1: buat direktori 
-
+```
 sudo mkdir -p /var/www/domain_kamu/html
-
+```
 Langkah 2: Kepemilkan direktori
-
+```
 sudo chown -R $USER:$USER /var/www/domain_kamu/html
-
+```
 Langkah 3: buat halaman html
-
+```
 nano /var/www/domain_kamu/html/index.html
-
+```
 Langkah 4: buat index
-
+```
 <html>
 <head>
     <title>Warung Nasi</title>
@@ -185,9 +184,9 @@ Langkah 4: buat index
     </table>
 </body>
 </html>
-
+```
 Langkah 5: Membuat blok server 
-
+```
 server {
         listen 80;
         listen [::]:80;
@@ -201,60 +200,60 @@ server {
                 try_files $uri $uri/ =404;
         }
 }
-
+```
 Langkah 6: aktifkan
-
+```
 sudo ln -s /etc/nginx/sites-available/domain_kamu /etc/nginx/sites-enabled/
-
+```
 Langkah 7: Menghindari kemungkinan masalah memori hash bucket
-
+```
 sudo nano /etc/nginx/nginx.conf
-
+```
 ![hasil](ss/17.png)
 
 Langkah 8: Uji konfigurasi
-
+```
 sudo nginx -t
-
+```
 Langkah 9: Restart nginx
-
+```
 sudo systemctl restart nginx
-
+```
 ### 1.3 config website
 Langkah 1: Masuk super user
-
+```
 sudo su
-
+```
 Langkah 2: masuk direktori var
-
+```
 cd /var/www/html/
-
+```
 Langkah 3: cek direktori
-
+```
 ls -l
-
+```
 ![hasil](ss/12.png)
 
 Langkah 4: Hapus index
-
+```
 rm index.nginx-debian.html
-
+```
 Langkah 5: buat index baru
-
+```
 pico index.html
-
+```
 Langkah 6: Restart nginx
-
+```
 /var/www/html# /etc/init.d/nginx restart
-
+```
 Langkah 7: cek apakah sudah aktif apa belum
-
+```
 /etc/init.d/nginx status
-
+```
 Langkah 8: Jika sudah aktif silahkan masuk ke browser lalu masukan ip
-
+```
 http://server_ip_kamu
-
+```
 ![hasil](ss/13.png)
 
 ---
