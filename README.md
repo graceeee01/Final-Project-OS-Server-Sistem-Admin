@@ -33,7 +33,6 @@ sudo systemctl status apache2
 ---
 
 ## 2. MySQL
-Penjelasan tentang instalasi dan konfigurasi Nginx.
 ### 1.1 Instal MySQL Server
 Langkah 1: Install MySQL Server
 ```
@@ -53,10 +52,10 @@ sudo mysql
 
 ```
 isi seperti dibawah 
-CREATE DATABASE opor_bebek_bu_Kom;
-CREATE USER 'webuser'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON opor_bebek_bu_Kom.* TO 'webuser'@'localhost';
-FLUSH PRIVILEGES;
+# CREATE DATABASE opor_bebek_bu_Kom;
+## CREATE USER 'webuser'@'localhost' IDENTIFIED BY 'password';
+### GRANT ALL PRIVILEGES ON opor_bebek_bu_Kom.* TO 'webuser'@'localhost';
+#### FLUSH PRIVILEGES;
 ---
 
 ## 3. Instal PHP
