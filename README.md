@@ -104,6 +104,8 @@ Langkah 1: Menambahkan file HTML
 ```
 sudo nano /var/www/html/index.html 
 ```
+Langkah 2: Buat index
+```
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -150,14 +152,14 @@ sudo nano /var/www/html/index.html
     </footer>
 </body>
 </html>
----
-
+```
 ## 7. File CSS
 Langkah 1: Menambahkan file CSS
 ```
 sudo nano /var/www/html/styels.css
 ```
-/* Reset dasar */
+Langkah 2: buat css
+```
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -239,4 +241,4 @@ body {
     padding: 20px;
     font-size: 0.9rem;
 }
-
+```
