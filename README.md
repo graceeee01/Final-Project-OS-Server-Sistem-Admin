@@ -1,4 +1,4 @@
-# FINAL PROJECT OS SERVER - 23.83.0962
+# FINAL PROJECT OS SERVER - 23.83.0957
 
 Membuat Layanan Web Server di **Ubuntu Desktop 22.04.3** dengan spesifikasi berikut:
 - **RAM**: 8 GB  
@@ -6,72 +6,46 @@ Membuat Layanan Web Server di **Ubuntu Desktop 22.04.3** dengan spesifikasi beri
 - **Disk**: 50 GB
 
 ## Daftar Isi
-1. [1. Squid Server](#1-squid-server)
-2. [2. Nginx](#2-nginx)
-3. [3. Firewalls](#3-firewalls)
-4. [4. CI/CD Server (Jenkins)](#4-cicd-server-jenkins)
-5. [5. Remote Desktop Server (XRDP)](#5-remote-desktop-server-xrdp)
-6. [6. Streaming Media Server (Plex Media Server)](#6-streaming-media-server-plex-media-server)
-7. [7. Proxy Server (Squid)](#7-proxy-server-squid)
+1. [1. Apache](#1-apache)
+2. [2.Mysql](#2-mysql)
+3. [3. Php](#3-php)
+4. [4. SSH server)](#4-ssh server)
+5. [5. Vsftpd](#5-vsftpd)
 
 ---
 
-## 1. Squid Server
-Penjelasan tentang instalasi dan konfigurasi Squid Server.
-### 1.1 Install Squid Server
-Langkah 1: Install Squid Server
-```
-sudo apt install squid
-```
-### 1.2 Configurasi Squid Server
-Langkah 1: Buka repo Squid dengan teks editor (saya menggunakan nano)
-```
-sudo nano /etc/squid/squid.conf
-```
-Langkah 2: Allow http port (scroll kebawah sampai menemukan http_port, lalu ganti dengan 8888
-```
-http_port 8888
-```
-Langkah 3: buat hostname agar terlihat (scroll kebawah sampai menemukan visible_hostname saya menggunakan hostname haruna)
-```
-visible_hostname haruna
-```
-Langkah 4: Masukan ip ubuntu di adapt to list your (ip kamu) IP network from where browsing
-```
-Masukan ip ubuntu di adapt to list your (192.168.0.101) IP network from where browsing
-```
-Langkah 5: Restart squid
-```
-sudo systemctl restart squid.service
-```
-### 1.3 Cek Squid
-Langkah 1: Menguji Squid
-```
-curl -v -x http://<hostname>:<ip>:<port> https://www.google.com/
-```
-hostname diisi dengan hostname pada visible, ip adalah ip vm, port adalah port 8888 yang sudah diisi tadi
-
-![hasil](ss/9.png)
-
----
-
-## 2. Nginx
-Penjelasan tentang instalasi dan konfigurasi Nginx.
-### 1.1 Install Nginx
-Langkah 1: update ubuntu dan install nginx
+## 1. Apache 
+Penjelasan tentang instalasi dan konfigurasi Apache.
+### 1.1 Perbarui Daftar Paket
+Langkah 1: Perbarui Daftar Paket
 ```
 sudo apt update
-sudo apt install nginx
 ```
-Langkah 2: lihat list firewall
+### 1.2 Instal Apache2
+Langkah 1: Instal Apache2
 ```
-sudo ufw app list
+sudo apt install apache2 -y
 ```
-![hasil](ss/14.png)
+Langkah 2: Cek Status Apache2
+```
+sudo systemctl status apache2
+```
+---
 
-Langkah 3: allow http nginx
+## 2. MySQL
+Penjelasan tentang instalasi dan konfigurasi Nginx.
+### 1.1 Instal MySQL Server
+Langkah 1: Install MySQL Server
 ```
-sudo ufw allow 'Nginx HTTP'
+sudo apt install mysql-server -y
+```
+Langkah 2: Periksa Status MySQL
+```
+sudo systemctl status mysql
+```
+Langkah 3: Amankan Instalasi MySQL 
+```
+sudo mysql_secure_installation
 ```
 Langkah 4: status nginx
 ```
