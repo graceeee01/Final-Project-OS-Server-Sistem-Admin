@@ -47,210 +47,197 @@ Langkah 3: Amankan Instalasi MySQL
 ```
 sudo mysql_secure_installation
 ```
-Langkah 4: status nginx
+Langkah 4: Tes Login ke MySQL
 ```
-sudo ufw status
-```
-![hasil](ss/15.png)
+sudo mysql
 
-Langkah 5: periksa nginx
 ```
-systemctl status nginx
-```
-![hasil](ss/16.png)
+isi seperti dibawah 
+CREATE DATABASE opor_bebek_bu_Kom;
+CREATE USER 'webuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON opor_bebek_bu_Kom.* TO 'webuser'@'localhost';
+FLUSH PRIVILEGES;
+---
 
-Langkah 6: cek ip ke browser
+## 3. Instal PHP
+### 1.1 Instal PHP
+Langkah 1: Instal PHP
 ```
-http://server_ip_kamu
+sudo apt install php
 ```
-### 1.2 config nginx
-Langkah 1: buat direktori 
+### 1.2 Instal Modul PHP
+Langkah 1: Instal Modul PHP
 ```
-sudo mkdir -p /var/www/domain_kamu/html
+sudo apt install libapache2-mod-php php-mysql -y
 ```
-Langkah 2: Kepemilkan direktori
+Langkah 2: Restart Apache
 ```
-sudo chown -R $USER:$USER /var/www/domain_kamu/html
+sudo systemctl restart apache2
 ```
-Langkah 3: buat halaman html
+Langkah 3: Buat file PHP
 ```
-nano /var/www/domain_kamu/html/index.html
+sudo nano /var/www/html/info.php
 ```
-Langkah 4: buat index
+foto
+---
+
+## 4. install SSH Server 
+Langkah 1: install SSH Server 
 ```
-<html>
+sudo apt install openssh-server
+```
+## 5. install vsftpd  
+Langkah 1: install vsftpd 
+```
+sudo apt install vsftpd -y
+```
+Langkah 2: konfigurasi vsftpd 
+```
+sudo apt /etc/vsftpd.conf
+```
+hapus pagar 
+local_enable=YES
+write_enable=YES
+---
+
+## 6. File HTML
+Langkah 1: Menambahkan file HTML
+```
+sudo nano /var/www/html/index.html 
+```
+<!DOCTYPE html>
+<html lang="id">
 <head>
-    <title>Warung Nasi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opo Bebek Bu Kom</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Selamat Datang di Warung Nasi Haruna Khas Indonesia</h1>
-
-    <h2>Makanan</h2>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tr>
-            <th>Makanan</th>
-            <th>Deskripsi</th>
-        </tr>
-        <tr>
-            <td>Nasi Goreng</td>
-            <td>Nasi goreng dengan bumbu dan tambahan telur/ayam.</td>
-        </tr>
-        <tr>
-            <td>Rendang</td>
-            <td>Daging sapi dimasak dengan santan dan rempah.</td>
-        </tr>
-        <tr>
-            <td>Sate</td>
-            <td>Daging bakar dengan saus kacang.</td>
-        </tr>
-        <tr>
-            <td>Gado-Gado</td>
-            <td>Salad sayuran dengan saus kacang.</td>
-        </tr>
-        <tr>
-            <td>Bakso</td>
-            <td>Bola daging sapi dalam kuah kaldu.</td>
-        </tr>
-        <tr>
-            <td>Pempek</td>
-            <td>Olahan ikan dengan kuah cuko.</td>
-        </tr>
-        <tr>
-            <td>Soto</td>
-            <td>Sup daging dan sayuran dengan bumbu rempah.</td>
-        </tr>
-    </table>
-
-    <h2>Minuman</h2>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tr>
-            <th>Minuman</th>
-            <th>Deskripsi</th>
-        </tr>
-        <tr>
-            <td>Es Teh Manis</td>
-            <td>Teh manis dingin.</td>
-        </tr>
-        <tr>
-            <td>Es Cendol/Dawet</td>
-            <td>Minuman santan, gula merah, dan cendol.</td>
-        </tr>
-        <tr>
-            <td>Wedang Jahe</td>
-            <td>Minuman hangat berbahan jahe.</td>
-        </tr>
-        <tr>
-            <td>Kopi Tubruk</td>
-            <td>Kopi bubuk diseduh langsung.</td>
-        </tr>
-        <tr>
-            <td>Bajigur</td>
-            <td>Santan, gula aren, dan jahe hangat.</td>
-        </tr>
-        <tr>
-            <td>Es Kelapa Muda</td>
-            <td>Air dan daging kelapa muda segar.</td>
-        </tr>
-        <tr>
-            <td>Bandrek</td>
-            <td>Minuman jahe dan gula aren.</td>
-        </tr>
-    </table>
+    <header class="hero">
+        <h1>Opo Bebek Bu Kom</h1>
+        <p>Lezatnya bebek goreng khas Bu Kom yang tiada duanya!</p>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="tentang" class="section">
+            <h2>Tentang Kami</h2>
+            <p>Opo Bebek Bu Kom adalah tempat makan favorit untuk menikmati bebek goreng renyah dengan resep keluarga turun-temurun. Kami hanya menggunakan bahan berkualitas untuk memastikan rasa terbaik setiap waktu.</p>
+        </section>
+        <section id="menu" class="section">
+            <h2>Menu Andalan</h2>
+            <ul class="menu-list">
+                <li>Bebek Goreng Original</li>
+                <li>Bebek Goreng Sambal Hijau</li>
+                <li>Bebek Bakar Pedas Manis</li>
+                <li>Paket Hemat Bebek</li>
+            </ul>
+        </section>
+        <section id="kontak" class="section">
+            <h2>Kontak Kami</h2>
+            <p>Kunjungi kami di: Jalan Lezat No. 123, Surabaya</p>
+            <p>Telepon: 0812-3456-7890</p>
+            <p>Email: <a href="mailto:opobebek@bukom.com">opobebek@bukom.com</a></p>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Opo Bebek Bu Kom. Semua Hak Dilindungi.</p>
+    </footer>
 </body>
 </html>
+---
+
+## 7. File CSS
+Langkah 1: Menambahkan file CSS
 ```
-Langkah 5: Membuat blok server 
+sudo nano /var/www/html/styels.css
 ```
-server {
-        listen 80;
-        listen [::]:80;
-
-        root /var/www/domain_kamu/html;
-        index index.html index.htm index.nginx-debian.html;
-
-        server_name domain_kamu www.domain_kamu;
-
-        location / {
-                try_files $uri $uri/ =404;
-        }
+/* Reset dasar */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
 }
-```
-Langkah 6: aktifkan
-```
-sudo ln -s /etc/nginx/sites-available/domain_kamu /etc/nginx/sites-enabled/
-```
-Langkah 7: Menghindari kemungkinan masalah memori hash bucket
-```
-sudo nano /etc/nginx/nginx.conf
-```
-![hasil](ss/17.png)
 
-Langkah 8: Uji konfigurasi
-```
-sudo nginx -t
-```
-Langkah 9: Restart nginx
-```
-sudo systemctl restart nginx
-```
-### 1.3 config website
-Langkah 1: Masuk super user
-```
-sudo su
-```
-Langkah 2: masuk direktori var
-```
-cd /var/www/html/
-```
-Langkah 3: cek direktori
-```
-ls -l
-```
-![hasil](ss/12.png)
+/* Header */
+.hero {
+    background: #ffcc00;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
 
-Langkah 4: Hapus index
-```
-rm index.nginx-debian.html
-```
-Langkah 5: buat index baru
-```
-pico index.html
-```
-Langkah 6: Restart nginx
-```
-/var/www/html# /etc/init.d/nginx restart
-```
-Langkah 7: cek apakah sudah aktif apa belum
-```
-/etc/init.d/nginx status
-```
-Langkah 8: Jika sudah aktif silahkan masuk ke browser lalu masukan ip
-```
-http://server_ip_kamu
-```
-![hasil](ss/13.png)
+.hero h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
 
----
+.hero p {
+    font-size: 1.2rem;
+}
 
-## 3. Firewalls
-Penjelasan tentang instalasi dan konfigurasi Firewalls.
+/* Navigasi */
+.navbar {
+    background: #333;
+    color: #fff;
+}
 
----
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+}
 
-## 4. CI/CD Server (Jenkins)
-Penjelasan tentang instalasi dan konfigurasi CI/CD Server menggunakan Jenkins.
+.navbar ul li {
+    margin: 0 15px;
+}
 
----
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-## 5. Remote Desktop Server (XRDP)
-Penjelasan tentang instalasi dan konfigurasi Remote Desktop Server menggunakan XRDP.
+.navbar ul li a:hover {
+    color: #ffcc00;
+}
 
----
+/* Section */
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
 
-## 6. Streaming Media Server (Plex Media Server)
-Penjelasan tentang instalasi dan konfigurasi Streaming Media Server menggunakan Plex Media Server.
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
 
----
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
 
-## 7. Proxy Server (Squid)
-Penjelasan tentang instalasi dan konfigurasi Proxy Server menggunakan Squid.
+.menu-list li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* Footer */
+.footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
