@@ -1,9 +1,9 @@
 # FINAL PROJECT OS SERVER - 23.83.0957
 
 Membuat Layanan Web Server di **Ubuntu Desktop 22.04.3** dengan spesifikasi berikut:
-- **RAM**: 8 GB  
+- **RAM**: 4 GB  
 - **Processor**: 4 CPU  
-- **Disk**: 50 GB
+- **Disk**: 40 GB
 
 ## Daftar Isi
 1. [1. Apache](#1-apache)
@@ -95,9 +95,7 @@ Langkah 2: konfigurasi vsftpd
 ```
 sudo apt /etc/vsftpd.conf
 ```
-hapus pagar 
-local_enable=YES
-write_enable=YES
+![Hasil](vsftpd.png)
 ---
 
 ## 6. File HTML
