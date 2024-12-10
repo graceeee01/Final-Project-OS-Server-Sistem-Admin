@@ -1,9 +1,9 @@
 # FINAL PROJECT OS SERVER - 23.83.0957
 
 Membuat Layanan Web Server di **Ubuntu Desktop 22.04.3** dengan spesifikasi berikut:
-- **RAM**: 4 GB  
+- **RAM**: 3451 MB  
 - **Processor**: 4 CPU  
-- **Disk**: 40 GB
+- **Disk**: 30 GB
 
 ## Daftar Isi
 1. [ Apache](#1-apache)
