@@ -95,6 +95,7 @@ Langkah 2: konfigurasi vsftpd
 ```
 sudo apt /etc/vsftpd.conf
 ```
+### hapus tanda pagar
 ![Hasil](vsftpd.png)
 ---
 
