@@ -78,7 +78,7 @@ Langkah 3: Buat file PHP
 ```
 sudo nano /var/www/html/info.php
 ```
-![Hasil](info php.png)
+![Hasil](infophp.png)
 ---
 
 ## 4. install SSH Server 
