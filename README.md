@@ -6,11 +6,11 @@ Membuat Layanan Web Server di **Ubuntu Desktop 22.04.3** dengan spesifikasi beri
 - **Disk**: 40 GB
 
 ## Daftar Isi
-1. [1. Apache](#1-apache)
-2. [2. Mysql](#2-mysql)
-3. [3. Php](#3-php)
-4. [4. SSH server](#4-ssh-server)
-5. [5. Vsftpd](#5-vsftpd)
+1. [ Apache](#1-apache)
+2. [ Mysql](#2-mysql)
+3. [ Php](#3-php)
+4. [ SSH server](#4-ssh-server)
+5. [ Vsftpd](#5-vsftpd)
 
 ---
 
