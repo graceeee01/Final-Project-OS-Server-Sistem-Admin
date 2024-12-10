@@ -30,6 +30,7 @@ Langkah 2: Cek Status Apache2
 ```
 sudo systemctl status apache2
 ```
+![Hasil}(apache.png)
 ---
 
 ## 2. MySQL
